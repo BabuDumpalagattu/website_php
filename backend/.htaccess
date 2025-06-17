@@ -1,0 +1,15 @@
+# Disable directory listing
+Options -Indexes
+
+# Prevent access to sensitive config files
+<FilesMatch "^(\.htaccess|\.env|db\.php|config\.php|config\.json)$">
+    Require all denied
+</FilesMatch>
+
+# Enable mod_rewrite
+RewriteEngine On
+
+# Skip HTTPS redirect for localhost or dev environments
+RewriteCond %{HTTP_HOST} !^localhost$
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
