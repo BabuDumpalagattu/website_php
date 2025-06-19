@@ -30,7 +30,7 @@ const AdminLogin = () => {
   setIsLoading(true);
 
   try {
-    const res = await fetch('http://localhost:5000/backend/api/admin_login.php', {
+    const res = await fetch('https://clahan.infy.uk/api/admin_login.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),

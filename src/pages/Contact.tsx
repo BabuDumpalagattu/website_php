@@ -301,14 +301,16 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    console.log('Sending:', JSON.stringify(formData));
 
     try {
-      const response = await fetch('http://localhost:5000/backend/api/save_contact.php', {
+      const response = await fetch('https://clahan.infy.uk/api/save_contact.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
+        
       });
 if (!response.ok) {
   throw new Error(`HTTP error! status: ${response.status}`);

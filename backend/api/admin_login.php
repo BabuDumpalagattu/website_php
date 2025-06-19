@@ -5,6 +5,7 @@ header("Access-Control-Allow-Methods: POST, OPTIONS");
 
 // Include database connection
 require_once __DIR__ . '/../../config/db.php';
+//require_once __DIR__ . '/../config/db.php';
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 if ($conn->connect_error) {

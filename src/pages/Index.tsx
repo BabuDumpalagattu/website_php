@@ -19,7 +19,7 @@ const Index = () => {
       description: "Advanced security integration in DevOps workflows and compliance frameworks",
       duration: "16 weeks", 
       level: "Advanced",
-      price: "₹18000",
+      price: "₹25,000",
       features: ["Security Tools", "Kubernetes", "Docker", "Cloud Platforms", "Microservices","Compliance", "Advanced Projects", "Mentorship"],
       image: "photo-1498050108023-c5249f4df085"
     },
@@ -69,56 +69,84 @@ const Index = () => {
       role: "DevOps Engineer at Public Sapient",
       content: "Thank you, sir. I am very happy to have a mentor like you sir. You helped me a lot to learn about new technologies and how to implement them. We are very lucky to have had a trainer like you sir at the beginning of our career. Miss you sir",
       rating: 5,
-      image: "/Test_img/mypic4.jpg"
+      image: "/Test_img/aniketh.png"
     },
     {
-      name: "Michael Chen", 
-      role: "Senior DevOps at StartupXYZ",
-      content: "Excellent instructor support and comprehensive curriculum. I went from zero DevOps knowledge to getting hired in just 4 months.",
+      name: "Vineet", 
+      role: "Devops engineer, US",
+      content: "Hi Sir, Thank you so much for the training and i had learnt a lot from you, not only as regarding the knowledge in DevOps but also how you teach and manage Urself between multiple activities like teaching, sports, social activities.I can happily say it is very pleasure meeting you and learning from you and still continue it. Finally, Bottom of my heart a sincere thank you.",
       rating: 5,
-      image: "photo-1581091226825-a6a2a5aee158"
+      image: "/Test_img/Vineet.png"
     },
     {
-      name: "Emma Rodriguez",
-      role: "Cloud Engineer at DataFlow",
-      content: "The practical labs and real project experience gave me confidence in interviews. Highly recommend for career switchers.",
+      name: "Javeed",
+      role: "Devops Engineer",
+      content: "Thank you, Murali, for generously sharing your knowledge with us.You covered almost all the topics discussed  session thoroughly, and your insights were truly valuable. We appreciate your effort and hope to continue receiving your support and guidance in the future to help us grow in our careers.Thank you once again!",
       rating: 5,
-      image: "photo-1605810230434-7631ac76ec81"
+      image:  "/Test_img/javeed.png"
     },
     {
-      name: "David Kumar",
-      role: "DevSecOps Engineer at CyberTech",
-      content: "The DevSecOps course was incredibly detailed. The security integration techniques I learned are exactly what I use daily in my current role.",
+      name: "Pradeep",
+      role: "Devops Engineer, US",
+      content: "Hi murali, your training was good, you have been very calm in explaining almost every topics... Way of explaining the hands on and making us understand shows your best knowledge... thank you for training and encouragement.",
       rating: 5,
-      image: "photo-1507003211169-0a1dd7228f2d"
+      image: "/Test_img/pradeep.png"
     },
     {
-      name: "Lisa Thompson",
-      role: "Cloud Solutions Architect at CloudFirst",
-      content: "From a non-tech background to landing a senior role in 6 months. The mentorship and job assistance programs are phenomenal.",
+      name: "ABHINAYA SRI",
+      role: "Devops Engineer",
+      content: "Thank you, Murali Mohan sir, for providing us with hands-on training and encouraging us to think differently. Your guidance has been invaluable in helping us solve our queries and deepen our understanding.These trainings have broadened my perspective and allowed me to design a case study that integrates all the technologies I've been learning. The transition from college to corporate training has been eye-opening, as these sessions are deeply rooted in real-world applications.",
       rating: 5,
-      image: "photo-1494790108755-2616b332c5e1"
+      image: "/Test_img/abhinaya.png"
     },
     {
-      name: "Raj Patel",
-      role: "Senior DevOps Consultant at TechConsult",
-      content: "The Kubernetes and Docker modules were outstanding. I'm now leading containerization projects for Fortune 500 companies.",
+      name: "Vaishnavi",
+      role: "Manager",
+      content: "It's been quite a good experience working with Clahan technologies the team consisting of Murali, Mobin, Michael and Simon. Their deliverable has been good and they have been quite accommodating about the back and forth involved with our engineering teams.The team has also provided guidance and knowledge transfer to our internal teams.Certainly looking forward to working with them on a long term.",
       rating: 5,
-      image: "photo-1472099645785-5658abf4ff4e"
+      image: "/Test_img/vaishnavi.jpg"
     },
     {
-      name: "Amanda Foster",
-      role: "Site Reliability Engineer at ScaleUp",
-      content: "The real-world scenarios and incident management training prepared me perfectly for my SRE role. Couldn't be happier with my career change.",
+      name: "Adebayo",
+      role: "Devops Engineer",
+      content: "Thank you for the training session, it was a wonderful and awesome experience. We really appreciate your worth of experience as per the hands on aspect. I feel much better prepared to deal with different issues. We love you..!",
       rating: 5,
-      image: "/Test_img/mypic4.jpg"
+      image: "/Test_img/adebayo.png"
     },
     {
-      name: "James Wilson",
-      role: "Lead DevOps Engineer at FinTech Pro",
-      content: "The CI/CD pipeline knowledge I gained here is invaluable. I've successfully automated deployment processes that save our team hours daily.",
+      name: "Kaushik",
+      role: "Devops Engineer",
+      content: "The training was good with more hands on and explanation of concepts. During the training when we had any issues you made us solve the issue by ourselves which helped us to improve our trouble shooting skills and the feedback provided by you throughout the training helped us to improve presentation and communication skills. You were always approachable whenever we had any issues or problems. Thank you for everything sir.",
       rating: 5,
-      image: "/Test_img/muraliimage.png"
+      image: "/Test_img/kaushik.png"
+    },
+     {
+      name: "Maruthi Rao",
+      role: "Devops Engineer",
+      content: "Currently I am working as DevOps role in one of leading company. Thanks for your support murali. I can happily say it is very pleasure meeting you and learning from you and still continue it. This is good opportunity to learn new things as DevOps Engineer.",
+      rating: 5,
+      image: "/Test_img/Maruthi.png"
+    },
+    {
+      name: "Affu",
+      role: "Devops Engineer",
+      content: "I just wanted to say a big thank you for all your help during my training. Your knowledge, patience, and encouragement meant a lot to me. Learning about Java, Node.js, microservices, Docker, Kubernetes, AWS, DevOps, Ansible, Linux, ITIL, ITSM, Data Dog, and Service Now was really interesting, especially with your guidance. The projects we worked on together helped me understand everything better and got me excited about these technologies.You're really good at explaining complicated stuff in a way that's easy to understand. Each session felt like a cool adventure, and I learned so much about the systems and tools we used.",
+      rating: 5,
+      image: "/Test_img/affu.png"
+    },
+     {
+      name: "Prasanya",
+      role: "Devops Engineer",
+      content: "This was surely the best trainer I've attended so far sir. You were really a great trainer and moreover a great friend to all of us. You motivate each one of us to achieve more and to improve ourselves everyday. Apart from being a trainer you were a mentor to each one of us and the best advisor.Thank you for everything sir.",
+      rating: 5,
+      image: "/Test_img/prasanya.png"
+    },
+    {
+      name: "Akashra",
+      role: "Devops Engineer",
+      content: "Sir, more than a trainer you have been a great friend to all of us. You have always given us the right feedback. There are days when we didn't do well, but your feedback on areas where to improve has helped us do better in the next presentations. And you have always stressed on the importance of learning continuously, you have exposed us to new technologies.. all these things we will remember for life",
+      rating: 5,
+      image: "/Test_img/Akashra.png"
     }
   ];
 

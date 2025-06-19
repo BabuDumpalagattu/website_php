@@ -115,7 +115,7 @@ const FounderStory = () => {
                   <div className="mb-6">
                     <Quote className="h-8 w-8 md:h-12 md:w-12 text-blue-600 mb-4" />
                     <blockquote className="text-base md:text-lg text-gray-700 leading-relaxed italic mb-6">
-                      "I started my career struggling to break into tech without formal computer science education. 
+                      "I started my career struggling to break into tech with formal computer science education. 
                       After years of self-learning and overcoming countless rejections, I finally landed my dream 
                       DevOps role. Now, I'm passionate about helping others avoid the same struggles I faced."
                     </blockquote>
