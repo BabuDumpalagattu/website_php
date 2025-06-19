@@ -23,22 +23,47 @@ const Footer = () => {
               Join thousands of successful graduates who transformed their careers.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/clahantechnologies" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
-                <X className="h-5 w-5" />
-              </a>
-              <a href="https://www.linkedin.com/company/99364695/admin/dashboard/" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="https://www.instagram.com/clahan_technologies/" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
-                <Instagram className="h-5 w-5" />
-              </a>
-               <a href="https://www.youtube.com/@Clahan_Technologies" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
-                <Youtube className="h-5 w-5" />
-              </a>
-            </div>
+  <a
+    href="https://www.facebook.com/clahantechnologies"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
+  >
+    <Facebook className="h-5 w-5" />
+  </a>
+  <a
+    href="#"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
+  >
+    <X className="h-5 w-5" />
+  </a>
+  <a
+    href="https://www.linkedin.com/company/99364695/admin/dashboard/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
+  >
+    <Linkedin className="h-5 w-5" />
+  </a>
+  <a
+    href="https://www.instagram.com/clahan_technologies/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
+  >
+    <Instagram className="h-5 w-5" />
+  </a>
+  <a
+    href="https://www.youtube.com/@Clahan_Technologies"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
+  >
+    <Youtube className="h-5 w-5" />
+  </a>
+</div>
           </div>
 
           {/* Quick Links */}

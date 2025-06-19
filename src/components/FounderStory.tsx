@@ -143,10 +143,10 @@ const FounderStory = () => {
                       </Button>
                     </a>
 
-                    <Button variant="outline" size="sm" className="flex items-center justify-center w-full sm:w-auto">
+                    {/* <Button variant="outline" size="sm" className="flex items-center justify-center w-full sm:w-auto">
                       <X className="h-4 w-4 mr-2" />
                       Follow on X
-                    </Button>
+                    </Button> */}
                   </div>
                 </div>
               </div>
