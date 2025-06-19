@@ -33,7 +33,7 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
        try {
-      const response = await fetch('https://clahan.infy.uk/api/save_contact.php', {
+      const response = await fetch('https://clahantechnologies.com/api/save_contact.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -16,7 +16,7 @@ const MessagesTable = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://clahan.infy.uk/api/get_contacts.php')
+    fetch('https://clahantechnologies.com/api/get_contacts.php')
       .then(res => res.json())
       .then(data => {
         setMessages(data);

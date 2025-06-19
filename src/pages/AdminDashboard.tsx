@@ -134,7 +134,7 @@ const AdminDashboard = () => {
   const [contactCount, setContactCount] = useState(0); // 🔹 New state
 
 useEffect(() => {
-  fetch('https://clahan.infy.uk/api/get_contacts.php')
+  fetch('https://clahantechnologies.com/api/get_contacts.php')
     .then(res => res.json())
     .then(data => {
       if (Array.isArray(data)) {
