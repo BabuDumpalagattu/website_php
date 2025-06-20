@@ -13,7 +13,7 @@ import PythonCourse from "./pages/PythonCourse";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
-
+import Enroll from "./pages/Enroll";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -32,6 +32,8 @@ const App = () => (
           <Route path="/courses/python" element={<PythonCourse />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/enroll" element={<Enroll />} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

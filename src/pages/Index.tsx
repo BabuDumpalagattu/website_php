@@ -10,10 +10,8 @@ import TestimonialCard from '@/components/TestimonialCard';
 import StatsSection from '@/components/StatsSection';
 import FounderStory from '@/components/FounderStory';
 
-
 const Index = () => {
   const courses = [
-    
     {
       title: "DevSecOps Professional",
       description: "Advanced security integration in DevOps workflows and compliance frameworks",
@@ -42,7 +40,8 @@ const Index = () => {
       image: "photo-1488590528505-98d2b5aba04b"
     }
   ];
-    const bannerSlides = [
+
+  const bannerSlides = [
     {
       id: 1,
       title: "New DevOps Batch Starting Soon!",
@@ -125,8 +124,6 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
-      {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-50 via-white to-green-50 pt-20 pb-16 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -166,23 +163,15 @@ const Index = () => {
             </div>
           </div>
         </div>
-        
-        {/* Floating Elements */}
         <div className="absolute top-20 left-10 w-20 h-20 bg-blue-200 rounded-full opacity-20 animate-bounce"></div>
         <div className="absolute bottom-20 right-10 w-16 h-16 bg-green-200 rounded-full opacity-20 animate-bounce" style={{animationDelay: '1s'}}></div>
-         </section>
+      </section>
 
-      {/* Banner Slider Section */}
+      {/* Updated Button Starts Here */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full"
-            >
+            <Carousel opts={{ align: "start", loop: true }} className="w-full">
               <CarouselContent>
                 {bannerSlides.map((slide) => (
                   <CarouselItem key={slide.id}>
@@ -190,19 +179,14 @@ const Index = () => {
                       <div className="absolute inset-0 bg-black/20"></div>
                       <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between p-8 lg:p-12">
                         <div className="flex-1 mb-8 lg:mb-0 lg:mr-8">
-                          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-                            {slide.title}
-                          </h2>
-                          <h3 className="text-xl lg:text-2xl mb-4 opacity-90">
-                            {slide.subtitle}
-                          </h3>
-                          <p className="text-lg mb-6 opacity-80 max-w-2xl">
-                            {slide.description}
-                          </p>
+                          <h2 className="text-3xl lg:text-4xl font-bold mb-4">{slide.title}</h2>
+                          <h3 className="text-xl lg:text-2xl mb-4 opacity-90">{slide.subtitle}</h3>
+                          <p className="text-lg mb-6 opacity-80 max-w-2xl">{slide.description}</p>
                           <Button 
                             size="lg" 
                             variant="secondary" 
                             className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-3"
+                            onClick={() => window.location.href = "/enroll"}
                           >
                             {slide.ctaText}
                             <ArrowRight className="ml-2 h-5 w-5" />
@@ -345,7 +329,7 @@ const Index = () => {
             <Button size="lg" variant="secondary" className="px-8 py-3 text-lg">
               Book Free Career Consultation
             </Button>
-            <Button size="lg" variant="outline" className="px-8 py-3 text-lg text-white border-white hover:bg-white hover:text-blue-600">
+            <Button size="lg" variant="outline" className="px-8 py-3 text-lg text-white border-white hover:bg-white hover:text-blue-600 ">
               Download Course Syllabus
             </Button>
           </div>
