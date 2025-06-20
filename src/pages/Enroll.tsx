@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Send } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 const Enroll = () => {
+  const { toast } = useToast();
+
   const [formData, setFormData] = useState({
     name: "",
     mobile: "",
@@ -12,8 +14,6 @@ const Enroll = () => {
     qualification: "",
     preferred: "",
   });
-
-  const [status, setStatus] = useState<null | string>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -29,7 +29,7 @@ const Enroll = () => {
 
     try {
       const response = await fetch(
-        'https://clahantechnologies.com/api/enroll_submit.php', 
+        "https://clahantechnologies.com/api/enroll_submit.php",
         {
           method: "POST",
           headers: {
@@ -42,8 +42,12 @@ const Enroll = () => {
       const data = await response.json();
 
       if (data.success) {
-        setStatus("success");
-        alert("Enrollment submitted successfully!");
+        toast({
+          title: "Success!",
+          description: "Enrollment submitted successfully!",
+          variant: "success",
+        });
+
         setFormData({
           name: "",
           mobile: "",
@@ -53,13 +57,19 @@ const Enroll = () => {
           preferred: "",
         });
       } else {
-        setStatus("error");
-        alert(data.message || "Submission failed. Try again.");
+        toast({
+          title: "Submission Failed",
+          description: data.message || "Something went wrong. Please try again.",
+          variant: "destructive",
+        });
       }
     } catch (err) {
       console.error(err);
-      setStatus("error");
-      alert("Something went wrong. Try again later.");
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
     }
   };
 
@@ -146,16 +156,6 @@ const Enroll = () => {
                 <option value="DevOps">DevOps & DevSecOps</option>
                 <option value="Python">Python Programming</option>
                 <option value="SQL">SQL & Database</option>
-                {/* <option value="aiops">Aiops</option>
-                <option value="finops">Finops</option>
-                <option value="cloudcomputing">Cloud Computing</option>
-                <option value="aws">AWS</option>
-                <option value="azure">Azure</option>
-                <option value="deeplearning">Deep Learning</option>
-                <option value="ai/ml">AI/ML</option>
-                <option value="gcp">GCP</option>
-                <option value="multicloud">Multi Cloud Training</option>
-                <option value="Cloud">Cloud Native DevOps</option> */}
               </select>
             </div>
 
@@ -219,17 +219,6 @@ const Enroll = () => {
               </button>
             </div>
           </form>
-
-          {status === "success" && (
-            <p className="text-green-600 text-sm text-center mt-4">
-              Submitted successfully!
-            </p>
-          )}
-          {status === "error" && (
-            <p className="text-red-600 text-sm text-center mt-4">
-              Something went wrong. Please try again.
-            </p>
-          )}
         </div>
       </main>
 
