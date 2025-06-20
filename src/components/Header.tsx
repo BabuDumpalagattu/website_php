@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Logo from "../img/logo-blue.svg"; // adjust the path if needed
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Logo from '../img/logo-blue.svg'; // adjust this path if needed
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
