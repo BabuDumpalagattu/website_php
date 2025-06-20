@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { Link } from 'react-router-dom';
 
 const PythonCourse = () => {
   const modules = [
@@ -88,9 +89,11 @@ const PythonCourse = () => {
               automation, and machine learning. Perfect for beginners and professionals alike.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/enroll">
               <Button size="lg" className="bg-white text-green-900 hover:bg-gray-100">
                 Enroll Now - ₹18,000
               </Button>
+              </Link>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-900">
                 Download Syllabus
               </Button>
@@ -212,9 +215,11 @@ const PythonCourse = () => {
                 <h2 className="text-3xl font-bold mb-4">Begin Your Python Journey!</h2>
                 <p className="text-xl mb-8">Join thousands of students who have launched successful careers with Python</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link to="/enroll">
                   <Button size="lg" className="bg-white text-green-900 hover:bg-gray-100">
                     Enroll Now - ₹18,000
                   </Button>
+                  </Link>
                   <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-900">
                     Talk to Counselor
                   </Button>

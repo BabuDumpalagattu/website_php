@@ -43,10 +43,9 @@ const Enroll = () => {
 
       if (data.success) {
         toast({
-          title: "Success!",
-          description: "Enrollment submitted successfully!",
-          variant: "success",
-        });
+  title: "Success!",
+  description: "Enrollment submitted successfully!",
+});
 
         setFormData({
           name: "",

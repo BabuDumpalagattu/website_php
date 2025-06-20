@@ -14,6 +14,8 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 import Enroll from "./pages/Enroll";
+import EnrolledDetails from "./pages/EnrolledDetails";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -32,6 +34,7 @@ const App = () => (
           <Route path="/courses/python" element={<PythonCourse />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          {/* <Route path="/enrolldetails" element={<EnrolledDetails />} /> */}
           <Route path="/enroll" element={<Enroll />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

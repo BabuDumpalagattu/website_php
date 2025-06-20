@@ -1,11 +1,15 @@
-// import { useEffect } from 'react';
+
+// import { useEffect, useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 // import { Button } from '@/components/ui/button';
 // import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 // import { toast } from 'sonner';
+// import MessagesTable from './MessagesTable'; // Make sure this path is correct
+// import footerLogo from '../img/adminlogo.jpg';
 
 // const AdminDashboard = () => {
 //   const navigate = useNavigate();
+//   const [showContacts, setShowContacts] = useState(false); // 🔹 NEW STATE
 
 //   useEffect(() => {
 //     const isLoggedIn = localStorage.getItem('isAdminLoggedIn');
@@ -13,6 +17,20 @@
 //       navigate('/admin/login');
 //     }
 //   }, [navigate]);
+//   const [contactCount, setContactCount] = useState(0); // 🔹 New state
+
+// useEffect(() => {
+//   fetch('https://clahantechnologies.com/api/get_contacts.php')
+//     .then(res => res.json())
+//     .then(data => {
+//       if (Array.isArray(data)) {
+//         setContactCount(data.length); // 🔹 Set the count dynamically
+//       }
+//     })
+//     .catch(err => {
+//       console.error("Error fetching contact count:", err);
+//     });
+// }, []);
 
 //   const handleLogout = () => {
 //     localStorage.removeItem('isAdminLoggedIn');
@@ -29,9 +47,16 @@
 //         {/* Header */}
 //         <div className="flex items-center justify-between mb-8">
 //           <div className="flex items-center space-x-4">
-//             <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
+//             {/* <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
 //               <span className="text-white font-bold text-xl">C</span>
-//             </div>
+//             </div> */}
+//             <div className="flex items-center justify-center mb-4">
+//   <img
+//     src={footerLogo}
+//     alt="Clahan Logo"
+//      className="h-20 w-auto object-contain mb-0" 
+//   />
+// </div>
 //             <div>
 //               <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
 //               <p className="text-gray-600">Welcome back, {adminEmail}</p>
@@ -50,7 +75,7 @@
 //               <CardDescription>Manage contact form submissions</CardDescription>
 //             </CardHeader>
 //             <CardContent>
-//               <p className="text-2xl font-bold text-blue-600">0</p>
+//           <p className="text-2xl font-bold text-blue-600">{contactCount}</p>
 //               <p className="text-sm text-gray-600">Total submissions</p>
 //             </CardContent>
 //           </Card>
@@ -87,7 +112,10 @@
 //             </CardHeader>
 //             <CardContent>
 //               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-//                 <Button className="h-20 flex flex-col bg-blue-600 hover:bg-blue-700">
+//                 <Button
+//                   onClick={() => setShowContacts(true)} // 🔹 When clicked, show table
+//                   className="h-20 flex flex-col bg-blue-600 hover:bg-blue-700"
+//                 >
 //                   <span className="font-semibold">View Contacts</span>
 //                   <span className="text-sm">Manage inquiries</span>
 //                 </Button>
@@ -107,23 +135,43 @@
 //             </CardContent>
 //           </Card>
 //         </div>
+
+//         {/* 🔹 Conditionally render MessagesTable */}
+//         {showContacts && (
+//           <div className="mt-10">
+//             <MessagesTable />
+//           </div>
+//         )}
 //       </div>
 //     </div>
 //   );
 // };
 
 // export default AdminDashboard;
+
+
+// === FILE: AdminDashboard.tsx ===
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { toast } from 'sonner';
-import MessagesTable from './MessagesTable'; // Make sure this path is correct
+import MessagesTable from './MessagesTable';
+import EnrolledDetails from './EnrolledDetails';
 import footerLogo from '../img/adminlogo.jpg';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
-  const [showContacts, setShowContacts] = useState(false); // 🔹 NEW STATE
+  const [showContacts, setShowContacts] = useState(false);
+  const [showEnrollments, setShowEnrollments] = useState(false);
+  const [contactCount, setContactCount] = useState(0);
+  const [enrollmentCount, setEnrollmentCount] = useState(0);
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isAdminLoggedIn');
@@ -131,20 +179,20 @@ const AdminDashboard = () => {
       navigate('/admin/login');
     }
   }, [navigate]);
-  const [contactCount, setContactCount] = useState(0); // 🔹 New state
 
-useEffect(() => {
-  fetch('https://clahantechnologies.com/api/get_contacts.php')
-    .then(res => res.json())
-    .then(data => {
-      if (Array.isArray(data)) {
-        setContactCount(data.length); // 🔹 Set the count dynamically
-      }
-    })
-    .catch(err => {
-      console.error("Error fetching contact count:", err);
-    });
-}, []);
+  useEffect(() => {
+    fetch('https://clahantechnologies.com/api/get_contacts.php')
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) setContactCount(data.length);
+      });
+
+    fetch('https://clahantechnologies.com/api/get_enrollments.php')
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) setEnrollmentCount(data.length);
+      });
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('isAdminLoggedIn');
@@ -161,16 +209,13 @@ useEffect(() => {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center space-x-4">
-            {/* <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">C</span>
-            </div> */}
             <div className="flex items-center justify-center mb-4">
-  <img
-    src={footerLogo}
-    alt="Clahan Logo"
-     className="h-20 w-auto object-contain mb-0" 
-  />
-</div>
+              <img
+                src={footerLogo}
+                alt="Clahan Logo"
+                className="h-20 w-auto object-contain mb-0"
+              />
+            </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
               <p className="text-gray-600">Welcome back, {adminEmail}</p>
@@ -181,7 +226,7 @@ useEffect(() => {
           </Button>
         </div>
 
-        {/* Dashboard Content */}
+        {/* Dashboard Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Card>
             <CardHeader>
@@ -189,7 +234,7 @@ useEffect(() => {
               <CardDescription>Manage contact form submissions</CardDescription>
             </CardHeader>
             <CardContent>
-          <p className="text-2xl font-bold text-blue-600">{contactCount}</p>
+              <p className="text-2xl font-bold text-blue-600">{contactCount}</p>
               <p className="text-sm text-gray-600">Total submissions</p>
             </CardContent>
           </Card>
@@ -200,7 +245,7 @@ useEffect(() => {
               <CardDescription>Track course registrations</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold text-green-600">0</p>
+              <p className="text-2xl font-bold text-green-600">{enrollmentCount}</p>
               <p className="text-sm text-gray-600">Active enrollments</p>
             </CardContent>
           </Card>
@@ -227,33 +272,40 @@ useEffect(() => {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <Button
-                  onClick={() => setShowContacts(true)} // 🔹 When clicked, show table
+                  onClick={() => {
+                    setShowContacts(true);
+                    setShowEnrollments(false);
+                  }}
                   className="h-20 flex flex-col bg-blue-600 hover:bg-blue-700"
                 >
                   <span className="font-semibold">View Contacts</span>
                   <span className="text-sm">Manage inquiries</span>
                 </Button>
-                <Button className="h-20 flex flex-col bg-green-600 hover:bg-green-700">
+                <Button
+                  onClick={() => {
+                    setShowEnrollments(true);
+                    setShowContacts(false);
+                  }}
+                  className="h-20 flex flex-col bg-green-600 hover:bg-green-700"
+                >
                   <span className="font-semibold">Course Management</span>
-                  <span className="text-sm">Edit courses</span>
-                </Button>
-                <Button className="h-20 flex flex-col bg-purple-600 hover:bg-purple-700">
-                  <span className="font-semibold">Add Content</span>
-                  <span className="text-sm">Create new posts</span>
-                </Button>
-                <Button className="h-20 flex flex-col bg-orange-600 hover:bg-orange-700">
-                  <span className="font-semibold">Analytics</span>
-                  <span className="text-sm">View reports</span>
+                  <span className="text-sm">View Enrollments</span>
                 </Button>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* 🔹 Conditionally render MessagesTable */}
+        {/* Tables */}
         {showContacts && (
           <div className="mt-10">
             <MessagesTable />
+          </div>
+        )}
+
+        {showEnrollments && (
+          <div className="mt-10">
+            <EnrolledDetails />
           </div>
         )}
       </div>

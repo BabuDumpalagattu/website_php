@@ -1,8 +1,10 @@
-import { CheckCircle, Clock, Users, Award, Star, Database, BarChart, Code } from 'lucide-react';
+import { CheckCircle, Clock, Users, Award, Star, Database, BarChart, Code} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { Link } from 'react-router-dom';
+
 
 const SQLCourse = () => {
   const modules = [
@@ -80,10 +82,13 @@ const SQLCourse = () => {
               Learn SQL from basics to advanced concepts. Perfect for data analysts, developers, 
               and anyone looking to work with databases professionally.
             </p>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-purple-900 hover:bg-gray-100">
+                
+              <Link to="/enroll"> <Button size="lg" className="bg-white text-purple-900 hover:bg-gray-100">
                 Enroll Now - ₹15,000
-              </Button>
+              </Button> </Link>
+             
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-900">
                 Download Syllabus
               </Button>
@@ -189,9 +194,11 @@ const SQLCourse = () => {
                 <h2 className="text-3xl font-bold mb-4">Start Your Data Journey Today!</h2>
                 <p className="text-xl mb-8">Master SQL and unlock opportunities in data analysis, development, and database administration</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/enroll">
                   <Button size="lg" className="bg-white text-purple-900 hover:bg-gray-100">
                     Enroll Now - ₹15,000
                   </Button>
+                  </Link>
                   <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-900">
                     Talk to Counselor
                   </Button>
