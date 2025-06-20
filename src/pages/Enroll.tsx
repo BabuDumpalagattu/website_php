@@ -13,6 +13,8 @@ const Enroll = () => {
     preferred: "",
   });
 
+  const [status, setStatus] = useState<null | string>(null);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -22,10 +24,43 @@ const Enroll = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Enrollment Submitted Successfully!");
+
+    try {
+      const response = await fetch(
+        'https://clahantechnologies.com/api/enroll_submit.php', 
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus("success");
+        alert("Enrollment submitted successfully!");
+        setFormData({
+          name: "",
+          mobile: "",
+          email: "",
+          course: "",
+          qualification: "",
+          preferred: "",
+        });
+      } else {
+        setStatus("error");
+        alert(data.message || "Submission failed. Try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+      alert("Something went wrong. Try again later.");
+    }
   };
 
   return (
@@ -39,7 +74,7 @@ const Enroll = () => {
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Name */}
+            {/* Full Name */}
             <div>
               <label className="block text-gray-700 font-medium">
                 Full Name
@@ -59,7 +94,7 @@ const Enroll = () => {
               />
             </div>
 
-            {/* Mobile */}
+            {/* Mobile Number */}
             <div>
               <label className="block text-gray-700 font-medium">
                 Mobile Number
@@ -80,7 +115,7 @@ const Enroll = () => {
               />
             </div>
 
-            {/* Email */}
+            {/* Email ID */}
             <div>
               <label className="block text-gray-700 font-medium">
                 Email ID
@@ -111,16 +146,16 @@ const Enroll = () => {
                 <option value="DevOps">DevOps & DevSecOps</option>
                 <option value="Python">Python Programming</option>
                 <option value="SQL">SQL & Database</option>
-                <option value="aiops">Aiops</option>
+                {/* <option value="aiops">Aiops</option>
                 <option value="finops">Finops</option>
-                <option value="cloudcomputing">cloud computing</option>
+                <option value="cloudcomputing">Cloud Computing</option>
                 <option value="aws">AWS</option>
                 <option value="azure">Azure</option>
-                <option value="deeplearning">Deeplearning</option>
+                <option value="deeplearning">Deep Learning</option>
                 <option value="ai/ml">AI/ML</option>
                 <option value="gcp">GCP</option>
-                <option value="multicloud">multi cloud training</option>
-                <option value="Cloud">Cloud Native DevOps</option>
+                <option value="multicloud">Multi Cloud Training</option>
+                <option value="Cloud">Cloud Native DevOps</option> */}
               </select>
             </div>
 
@@ -174,7 +209,7 @@ const Enroll = () => {
               </div>
             </div>
 
-            {/* Submit Button */}
+            {/* Submit */}
             <div className="text-center">
               <button
                 type="submit"
@@ -184,6 +219,17 @@ const Enroll = () => {
               </button>
             </div>
           </form>
+
+          {status === "success" && (
+            <p className="text-green-600 text-sm text-center mt-4">
+              Submitted successfully!
+            </p>
+          )}
+          {status === "error" && (
+            <p className="text-red-600 text-sm text-center mt-4">
+              Something went wrong. Please try again.
+            </p>
+          )}
         </div>
       </main>
 
