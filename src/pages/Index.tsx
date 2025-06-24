@@ -165,9 +165,103 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* ... rest of code unchanged ... */}
+      {/* Hero / Banner */}
+      <section className="relative bg-gradient-to-br from-blue-50 via-white to-green-50 pt-20 pb-16 overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <Badge className="mb-6 bg-blue-100 text-blue-700 hover:bg-blue-200">
+              🚀 Transform Your Career in Tech
+            </Badge>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent leading-tight">
+              Master DevOps & Launch Your Tech Career
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Join thousands of successful graduates who transitioned to high‑paying DevOps roles. Practical training designed for freshers, graduates, and career switchers.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+              <Link to="/contact">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg group">
+                  Start Your DevOps Journey
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link to="/success-stories">
+                <Button variant="outline" size="lg" className="px-8 py-3 text-lg group">
+                  <Play className="mr-2 h-5 w-5" />
+                  Watch Success Stories
+                </Button>
+              </Link>
+            </div>
+            <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-600">
+              <div className="flex items-center">
+                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                Job Guarantee Program
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                Industry Expert Instructors
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                Hands‑on Projects
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="absolute top-20 left-10 w-20 h-20 bg-blue-200 rounded-full opacity-20 animate-bounce"></div>
+        <div className="absolute bottom-20 right-10 w-16 h-16 bg-green-200 rounded-full opacity-20 animate-bounce" style={{ animationDelay: '1s' }}></div>
+      </section>
 
-      {/* Courses Section */}
+      {/* Banner Carousel */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <Carousel opts={{ align: 'start', loop: true }} className="w-full">
+              <CarouselContent>
+                {bannerSlides.map(slide => (
+                  <CarouselItem key={slide.id}>
+                    <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-r ${slide.bgGradient} text-white`}>
+                      <div className="absolute inset-0 bg-black/20"></div>
+                      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between p-8 lg:p-12">
+                        <div className="flex-1 mb-8 lg:mb-0 lg:mr-8">
+                          <h2 className="text-3xl lg:text-4xl font-bold mb-4">{slide.title}</h2>
+                          <h3 className="text-xl lg:text-2xl mb-4 opacity-90">{slide.subtitle}</h3>
+                          <p className="text-lg mb-6 opacity-80 max-w-2xl">{slide.description}</p>
+                          <Button
+                            size="lg"
+                            variant="secondary"
+                            className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-3"
+                            onClick={() => window.location.href = "/enroll"}
+                          >
+                            {slide.ctaText}
+                            <ArrowRight className="ml-2 h-5 w-5" />
+                          </Button>
+                        </div>
+                        <div className="flex-shrink-0">
+                          <div className="w-80 h-60 lg:w-96 lg:h-72 rounded-xl overflow-hidden shadow-2xl">
+                            <img
+                              src={`https://images.unsplash.com/${slide.image}?auto=format&fit=crop&w=800&q=80`}
+                              alt={slide.title}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-4" />
+              <CarouselNext className="right-4" />
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <StatsSection />
+
+      {/* Courses */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -176,13 +270,9 @@ const Index = () => {
               Structured courses designed to take you from beginner to industry-ready professional
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {courses.map((course, index) => (
-              <CourseCard key={index} {...course} />
-            ))}
+            {courses.map((course, idx) => <CourseCard key={idx} {...course} />)}
           </div>
-
           <div className="text-center mt-12">
             <Button variant="outline" size="lg" className="px-8 py-3">
               <Book className="mr-2 h-5 w-5" />
@@ -192,9 +282,73 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ... rest of code unchanged ... */}
+      {/* Founder Story */}
+      <FounderStory />
 
-      {/* CTA Section */}
+      {/* Why Choose Us */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">Why Choose Clahan Technologies?</h2>
+            <p className="text-xl text-gray-600">We understand the challenges of breaking into tech</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Target className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Job‑Focused Training</h3>
+              <p className="text-gray-600">Curriculum tailored for hiring managers' needs</p>
+            </Card>
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="h-8 w-8 text-green-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">1:1 Mentorship</h3>
+              <p className="text-gray-600">Expert guidance throughout your journey</p>
+            </Card>
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Trophy className="h-8 w-8 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Real Projects</h3>
+              <p className="text-gray-600">Hands‑on deployments & portfolio building</p>
+            </Card>
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Calendar className="h-8 w-8 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Flexible Schedule</h3>
+              <p className="text-gray-600">Weekend & evening batches available</p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">Success Stories</h2>
+            <p className="text-xl text-gray-600">See how our graduates transformed their careers</p>
+          </div>
+          <div className="max-w-6xl mx-auto">
+            <Carousel opts={{ align: 'start', loop: true }} className="w-full">
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {testimonials.map((t, i) => (
+                  <CarouselItem key={i} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                    <TestimonialCard {...t} />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-green-600 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Career?</h2>
@@ -206,7 +360,7 @@ const Index = () => {
               Book Free Career Consultation
             </Button>
             <a href="/devsecops-syllabus.pdf" download>
-              <Button size="lg" variant="outline" className="px-8 py-3 text-lg text-white border-white hover:bg-white hover:text-blue-600 ">
+              <Button size="lg" variant="outline" className="px-8 py-3 text-lg text-white border-white hover:bg-white hover:text-blue-600">
                 Download Course Syllabus
               </Button>
             </a>
