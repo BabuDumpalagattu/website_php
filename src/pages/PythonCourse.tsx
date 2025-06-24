@@ -131,7 +131,7 @@ const PythonCourse = () => {
               <CardContent className="p-6">
                 <Star className="h-8 w-8 text-yellow-600 mx-auto mb-3" />
                 <h3 className="font-semibold mb-2">Rating</h3>
-                <p className="text-gray-600">4.9/5 (300+ Reviews)</p>
+                <p className="text-gray-600">0/5 (0+ Reviews)</p>
               </CardContent>
             </Card>
           </div>

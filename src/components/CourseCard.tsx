@@ -1,4 +1,4 @@
-import { Clock, Users, Award, Star } from 'lucide-react';
+import { Clock, Users, Award, Star, StarHalf, StarOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -12,7 +12,31 @@ interface CourseCardProps {
   price: string;
   features: string[];
   image: string;
+  syllabus: string;
+  rating: number; // Added rating prop
 }
+
+// Helper function to render stars
+const renderStars = (rating: number) => {
+  const stars = [];
+  const fullStars = Math.floor(rating);
+  const hasHalf = rating % 1 >= 0.3 && rating % 1 <= 0.7; // Approx. half-star logic
+  const totalStars = hasHalf ? fullStars + 1 : fullStars;
+  
+  for (let i = 0; i < fullStars; i++) {
+    stars.push(<Star key={`full-${i}`} className="h-4 w-4 text-yellow-500" fill="currentColor" />);
+  }
+
+  if (hasHalf) {
+    stars.push(<StarHalf key="half" className="h-4 w-4 text-yellow-500" fill="currentColor" />);
+  }
+
+  for (let i = totalStars; i < 5; i++) {
+    stars.push(<StarOff key={`empty-${i}`} className="h-4 w-4 text-gray-300" />);
+  }
+
+  return stars;
+};
 
 const CourseCard = ({
   title,
@@ -22,6 +46,8 @@ const CourseCard = ({
   price,
   features,
   image,
+  syllabus,
+  rating,
 }: CourseCardProps) => {
   return (
     <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 overflow-hidden flex flex-col">
@@ -37,8 +63,8 @@ const CourseCard = ({
         </div>
         <div className="absolute top-4 right-4">
           <div className="flex items-center bg-white/90 rounded-full px-3 py-1">
-            <Star className="h-4 w-4 text-yellow-500 mr-1" />
-            <span className="text-sm font-medium">4.8</span>
+            {renderStars(rating)}
+            <span className="text-sm font-medium ml-2 text-gray-800">{rating.toFixed(1)}</span>
           </div>
         </div>
       </div>
@@ -82,12 +108,14 @@ const CourseCard = ({
               Enroll Now
             </Button>
           </Link>
-          <Button
-            variant="outline"
-            className="w-full border-gray-300 hover:border-blue-600 hover:text-blue-600"
-          >
-            View Syllabus
-          </Button>
+          <a href={`/${syllabus}`} download>
+            <Button
+              variant="outline"
+              className="w-full border-gray-300 hover:border-blue-600 hover:text-blue-600"
+            >
+              View Syllabus
+            </Button>
+          </a>
         </div>
       </div>
     </Card>

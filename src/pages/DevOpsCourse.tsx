@@ -96,9 +96,11 @@ const DevOpsCourse = () => {
                 Enroll Now - ₹25,000
               </Button>
               </Link>
+              <a href='/devsecops-syllabus.pdf' download>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900">
                 Download Syllabus
               </Button>
+              </a>
             </div>
           </div>
         </div>
