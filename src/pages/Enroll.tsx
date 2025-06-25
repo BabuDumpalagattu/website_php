@@ -155,6 +155,16 @@ const Enroll = () => {
                 <option value="DevOps">DevOps & DevSecOps</option>
                 <option value="Python">Python Programming</option>
                 <option value="SQL">SQL & Database</option>
+                <option value="aiops">Aiops</option>
+                <option value="finops">Finops</option>
+                <option value="cloudcomputing">cloud computing</option>
+                <option value="aws">AWS</option>
+                <option value="azure">Azure</option>
+                <option value="deeplearning">Deeplearning</option>
+                <option value="ai/ml">AI/ML</option>
+                <option value="gcp">GCP</option>
+                <option value="multicloud">multi cloud training</option>
+                <option value="Cloud">Cloud Native DevOps</option>
               </select>
             </div>
 
