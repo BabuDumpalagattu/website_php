@@ -12,6 +12,7 @@ export interface Job {
   contactPhone: string;
   position?: string;       // newly added field
   experience?: string;
+  openings?: Number;
   positionsAvailable?: string;
      // newly added field
 }

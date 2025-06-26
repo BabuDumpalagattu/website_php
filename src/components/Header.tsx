@@ -49,8 +49,8 @@ const Header = () => {
             <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">
               Contact
             </Link>
-            <Link to="/admin/dashboard" className="text-gray-700 hover:text-blue-600 transition-colors">
-              JobPost
+            <Link to="/jobs" className="text-gray-700 hover:text-blue-600 transition-colors">
+              Careers
             </Link>
           </nav>
 

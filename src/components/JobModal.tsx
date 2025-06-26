@@ -10,19 +10,31 @@ interface JobModalProps {
   onClose: () => void;
 }
 
-const convertSalaryToINR = (salary: string): string => {
+const convertSalaryToINR = (salary: string | null | undefined): string => {
+  if (!salary || typeof salary !== "string") return "Not disclosed";
+
   const exchangeRate = 83.5;
-  const range = salary.replace(/\$/g, '').split('-').map(s => parseFloat(s.replace(/,/g, '').trim()));
+  const range = salary
+    .replace(/\$/g, "")
+    .split("-")
+    .map((s) => parseFloat(s.replace(/,/g, "").trim()));
+
   if (range.length === 2 && !isNaN(range[0]) && !isNaN(range[1])) {
-    const inrMin = Math.round(range[0] * exchangeRate).toLocaleString('en-IN');
-    const inrMax = Math.round(range[1] * exchangeRate).toLocaleString('en-IN');
+    const inrMin = Math.round(range[0] * exchangeRate).toLocaleString("en-IN");
+    const inrMax = Math.round(range[1] * exchangeRate).toLocaleString("en-IN");
     return `₹${inrMin} - ₹${inrMax}`;
   }
+
   return salary;
 };
 
 const JobModal = ({ job, isOpen, onClose }: JobModalProps) => {
   if (!job) return null;
+
+  const skillsArray =
+    Array.isArray(job.skills) && typeof job.skills[0] === "string"
+      ? job.skills
+      : [];
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -37,21 +49,26 @@ const JobModal = ({ job, isOpen, onClose }: JobModalProps) => {
               <Building className="h-5 w-5 mr-2" />
               <span className="text-lg font-medium">{job.company}</span>
             </div>
-            <Badge variant={job.type === 'Full-time' ? 'default' : 'secondary'}>
+            <Badge variant={job.type === "Full-time" ? "default" : "secondary"}>
               {job.type}
             </Badge>
           </div>
 
-          {job.position && (
+          {(job.position || job.openings) && (
             <div className="text-gray-600 ml-[26px]">
-              Position: {job.position}
-              {job.positionsAvailable && (
-                <span className="ml-2 text-sm text-gray-500">({job.positionsAvailable} openings)</span>
+              {job.position && <span>Position: {job.position}</span>}
+              {Number(job.openings) && (
+                <span className="ml-2 text-sm text-gray-500">
+                  ({Number(job.openings)} openings)
+                </span>
               )}
             </div>
           )}
+
           {job.experience && (
-            <div className="text-gray-600 ml-[26px]">Experience: {job.experience} years</div>
+            <div className="text-gray-600 ml-[26px]">
+              Experience: {job.experience} years
+            </div>
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -77,11 +94,15 @@ const JobModal = ({ job, isOpen, onClose }: JobModalProps) => {
           <div>
             <h3 className="text-lg font-semibold mb-3">Required Skills</h3>
             <div className="flex flex-wrap gap-2">
-              {job.skills.map((skill, index) => (
-                <Badge key={index} variant="outline">
-                  {skill}
-                </Badge>
-              ))}
+              {skillsArray.length > 0 ? (
+                skillsArray.map((skill, index) => (
+                  <Badge key={index} variant="outline">
+                    {skill}
+                  </Badge>
+                ))
+              ) : (
+                <span className="text-gray-500">Not specified</span>
+              )}
             </div>
           </div>
 
@@ -90,17 +111,17 @@ const JobModal = ({ job, isOpen, onClose }: JobModalProps) => {
             <div className="space-y-2">
               <div className="flex items-center text-gray-600">
                 <Mail className="h-4 w-4 mr-2" />
-                <span>{job.contactEmail}</span>
+                <span>{job.contactEmail || "Not provided"}</span>
               </div>
               <div className="flex items-center text-gray-600">
                 <Phone className="h-4 w-4 mr-2" />
-                <span>{job.contactPhone}</span>
+                <span>{job.contactPhone || "Not provided"}</span>
               </div>
             </div>
           </div>
 
           <div className="flex gap-3 pt-4">
-            <Button className="flex-1 bg-blue-600 hover:bg-blue-700">
+            <Button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white">
               Apply Now
             </Button>
             <Button variant="outline" className="flex-1">
