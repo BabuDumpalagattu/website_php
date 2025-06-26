@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Send } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 const Enroll = () => {
+  const { toast } = useToast();
+
   const [formData, setFormData] = useState({
     name: "",
     mobile: "",
@@ -22,10 +24,52 @@ const Enroll = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Enrollment Submitted Successfully!");
+
+    try {
+      const response = await fetch(
+        "https://clahantechnologies.com/api/enroll_submit.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast({
+  title: "Success!",
+  description: "Enrollment submitted successfully!",
+});
+
+        setFormData({
+          name: "",
+          mobile: "",
+          email: "",
+          course: "",
+          qualification: "",
+          preferred: "",
+        });
+      } else {
+        toast({
+          title: "Submission Failed",
+          description: data.message || "Something went wrong. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -39,7 +83,7 @@ const Enroll = () => {
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Name */}
+            {/* Full Name */}
             <div>
               <label className="block text-gray-700 font-medium">
                 Full Name
@@ -59,7 +103,7 @@ const Enroll = () => {
               />
             </div>
 
-            {/* Mobile */}
+            {/* Mobile Number */}
             <div>
               <label className="block text-gray-700 font-medium">
                 Mobile Number
@@ -80,7 +124,7 @@ const Enroll = () => {
               />
             </div>
 
-            {/* Email */}
+            {/* Email ID */}
             <div>
               <label className="block text-gray-700 font-medium">
                 Email ID
@@ -120,7 +164,7 @@ const Enroll = () => {
                 <option value="ai/ml">AI/ML</option>
                 <option value="gcp">GCP</option>
                 <option value="multicloud">multi cloud training</option>
-                <option value="Cloud">Cloud Native DevOps</option>
+                <option value="Cloud">Cloud Native DevOps</option>
               </select>
             </div>
 
@@ -174,7 +218,7 @@ const Enroll = () => {
               </div>
             </div>
 
-            {/* Submit Button */}
+            {/* Submit */}
             <div className="text-center">
               <button
                 type="submit"

@@ -22,6 +22,8 @@ import Admin from "./pages/Admin";
 import AdminJobDashboard from "./pages/AdminJobDashboard";
 import JobBoard from "./pages/JobBoard";
 import NotFound from "./pages/NotFound";
+// If needed:
+// import EnrolledDetails from "./pages/EnrolledDetails";
 
 import { Job } from "./types/job";
 
@@ -63,13 +65,11 @@ const AppRoutes = () => {
         <Route path="/courses/sql" element={<SQLCourse />} />
         <Route path="/courses/python" element={<PythonCourse />} />
         <Route path="/enroll" element={<Enroll />} />
-
         {/* Admin & Job Management */}
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<Admin jobs={jobs} onAddJob={handleAddJob} />} />
         <Route path="/admin/dashboard" element={<AdminJobDashboard jobs={jobs} onAddJob={handleAddJob} />} />
         <Route path="/jobs" element={<JobBoard jobs={jobs} />} />
-
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>

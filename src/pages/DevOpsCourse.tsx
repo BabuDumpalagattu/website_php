@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { Link } from 'react-router-dom';
 
 const DevOpsCourse = () => {
   const tools = [
@@ -90,12 +91,16 @@ const DevOpsCourse = () => {
               Master automation, scalability, and security in software delivery.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/enroll">
               <Button size="lg" className="bg-white text-blue-900 hover:bg-gray-100">
                 Enroll Now - ₹25,000
               </Button>
+              </Link>
+              <a href='/devsecops-syllabus.pdf' download>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900">
                 Download Syllabus
               </Button>
+              </a>
             </div>
           </div>
         </div>
@@ -231,9 +236,11 @@ const DevOpsCourse = () => {
                 <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Career?</h2>
                 <p className="text-xl mb-8">Join thousands of professionals who have successfully transitioned to DevOps roles</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link to="/enroll">
                   <Button size="lg" className="bg-white text-blue-900 hover:bg-gray-100">
                     Enroll Now - ₹25,000
                   </Button>
+                  </Link>
                   <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900">
                     Talk to Counselor
                   </Button>
