@@ -45,7 +45,7 @@ if ($result && $result->num_rows > 0) {
         }
 
         // Normalize experience and openings
-        $row['experience'] = isset($row['experience']) ? (int)$row['experience'] : 0;
+      
         $row['openings'] = isset($row['openings']) ? (int)$row['openings'] : 0;
 
         $jobs[] = $row;

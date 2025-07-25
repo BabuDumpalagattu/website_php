@@ -68,7 +68,7 @@ const JobForm = ({ onSubmit, initialData, isEditing = false }: JobFormProps) => 
       location: formData.location,
       type: formData.type,
       position: formData.position,
-      experience: isNaN(Number(formData.experience)) ? "" : formData.experience,
+      experience:  formData.experience,
       openings: Number(formData.positionsAvailable),
       salaryRange: formData.salary,
       description: formData.description,
@@ -201,10 +201,25 @@ const JobForm = ({ onSubmit, initialData, isEditing = false }: JobFormProps) => 
               <Label htmlFor="position">Job Position</Label>
               <Input id="position" value={formData.position} onChange={(e) => setFormData((prev) => ({ ...prev, position: e.target.value }))} />
             </div>
-            <div>
-              <Label htmlFor="experience">Years of Experience</Label>
-              <Input id="experience" type="number" min="0" value={formData.experience} onChange={(e) => setFormData((prev) => ({ ...prev, experience: e.target.value }))} />
-            </div>
+          <div>
+  <Label htmlFor="experience">Years of Experience</Label>
+  <Select
+    value={formData.experience}
+    onValueChange={(value) => setFormData((prev) => ({ ...prev, experience: value }))}
+  >
+    <SelectTrigger>
+      <SelectValue placeholder="Years of Experience" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="0-1+">0-1+</SelectItem>
+      <SelectItem value="1-2+">1-2+</SelectItem>
+      <SelectItem value="2-3+">2-3+</SelectItem>
+      <SelectItem value="3-5+">3-5+</SelectItem>
+      <SelectItem value="5+">5+</SelectItem>
+    </SelectContent>
+  </Select>
+</div>
+
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

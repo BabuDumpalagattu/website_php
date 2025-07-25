@@ -49,7 +49,7 @@ $stmt->bind_param(
   $position,
   $experience,
   $openings,
-  $salary,
+  $salary_range,
   $description,
   $skills,
   $email,

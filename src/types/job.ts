@@ -14,5 +14,6 @@ export interface Job {
   experience?: string;
   openings?: Number;
   positionsAvailable?: string;
+  
      // newly added field
 }

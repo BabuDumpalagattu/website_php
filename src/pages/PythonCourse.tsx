@@ -94,9 +94,11 @@ const PythonCourse = () => {
                 Enroll Now - ₹18,000
               </Button>
               </Link>
+               <a href='/python-syllabus.pdf' download>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-900">
                 Download Syllabus
               </Button>
+              </a>
             </div>
           </div>
         </div>
